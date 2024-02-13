@@ -36,8 +36,8 @@ export function SubmissionArea() {
   };
 
   return (
-    <section className="mt-10 space-y-5">
-      <div className="flex w-2/3 mx-auto space-x-2">
+    <section className="my-10 space-y-5">
+      <div className="flex flex-col md:flex-row w-2/3 mx-auto gap-2">
         <Input
           type="url"
           placeholder="Paste the url..."
@@ -48,7 +48,7 @@ export function SubmissionArea() {
           <UpdateIcon className="h-5 w-5" />
         </Button>
       </div>
-      <div className="flex w-2/3 mx-auto space-x-2">
+      <div className="flex flex-col md:flex-row w-2/3 mx-auto gap-2">
         <Input placeholder="Converted Url" value={convertedUrl} readOnly />
         <Button variant="outline" onClick={copyUrl}>
           {copyClicked ? (
@@ -59,7 +59,9 @@ export function SubmissionArea() {
         </Button>
       </div>
       <div className="grid place-items-center">
-        <Button variant="outline" onClick={performReset}>Reset</Button>
+        <Button variant="outline" onClick={performReset}>
+          Reset
+        </Button>
       </div>
     </section>
   );
