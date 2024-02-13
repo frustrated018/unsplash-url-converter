@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const robotoMono = Roboto_Mono({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
-  title: "URL Changer",
-  description: "A simple tool for changing unsplash links",
+  title: "Unsplash URL Converter",
+  description:
+    "A simple tool for converting normal unsplash links to liks you can directly use as src in your next project",
 };
 
 export default function RootLayout({
@@ -16,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark`}>{children}</body>
+      <body className={`${robotoMono.className} dark`}>{children}</body>
     </html>
   );
 }
