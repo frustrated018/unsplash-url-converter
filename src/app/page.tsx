@@ -1,9 +1,12 @@
+import { SubmissionArea } from "@/components/submissionArea";
+
 export default function Home() {
   return (
-    <main className="min-h-screen grid place-items-center">
-      <div className="h-[50vh] w-1/2 bg-background">
-        <h2 className="text-2xl text-center mt-10">Copy paste mechanism</h2>
-      </div>
+    <main className="h-screen flex justify-center items-center">
+      <section className="h-auto lg:h-[70vh] w-[70%] bg-background rounded-lg border-2">
+        <h2 className="text-4xl text-center mt-5">Unsplash URL Changer</h2>
+        <SubmissionArea />
+      </section>
     </main>
   );
 }
