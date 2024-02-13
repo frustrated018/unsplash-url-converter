@@ -38,7 +38,7 @@ export function SubmissionArea() {
 
   return (
     <section className="my-5 space-y-5">
-      <div className="w-[90%] xl:w-3/4 mx-auto">
+      <div className="w-[90%] mx-auto">
         <Label>Copied URL:</Label>
         <div className="flex flex-col md:flex-row gap-2">
           <Input
@@ -52,7 +52,7 @@ export function SubmissionArea() {
           </Button>
         </div>
       </div>
-      <div className="w-[90%] xl:w-3/4 mx-auto">
+      <div className="w-[90%] mx-auto">
         <Label htmlFor="converted">Converted URL:</Label>
         <div className="flex flex-col md:flex-row gap-2">
           <Input
