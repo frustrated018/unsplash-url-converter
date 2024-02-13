@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CheckIcon, CopyIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
+import { Label } from "./ui/label";
 
 export function SubmissionArea() {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -36,27 +37,38 @@ export function SubmissionArea() {
   };
 
   return (
-    <section className="my-10 space-y-5">
-      <div className="flex flex-col md:flex-row w-2/3 mx-auto gap-2">
-        <Input
-          type="url"
-          placeholder="Paste the url..."
-          value={originalUrl}
-          onChange={(e) => setOriginalUrl(e.target.value)}
-        />
-        <Button variant="outline" onClick={convertUrl}>
-          <UpdateIcon className="h-5 w-5" />
-        </Button>
+    <section className="my-5 space-y-5">
+      <div className="w-[90%] xl:w-3/4 mx-auto">
+        <Label>Copied URL:</Label>
+        <div className="flex flex-col md:flex-row gap-2">
+          <Input
+            type="url"
+            placeholder="Paste the url..."
+            value={originalUrl}
+            onChange={(e) => setOriginalUrl(e.target.value)}
+          />
+          <Button variant="outline" onClick={convertUrl}>
+            <UpdateIcon className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
-      <div className="flex flex-col md:flex-row w-2/3 mx-auto gap-2">
-        <Input placeholder="Converted Url" value={convertedUrl} readOnly />
-        <Button variant="outline" onClick={copyUrl}>
-          {copyClicked ? (
-            <CheckIcon className="h-5 w-5 text-green-500" />
-          ) : (
-            <CopyIcon className="h-5 w-5" />
-          )}
-        </Button>
+      <div className="w-[90%] xl:w-3/4 mx-auto">
+        <Label htmlFor="converted">Converted URL:</Label>
+        <div className="flex flex-col md:flex-row gap-2">
+          <Input
+            id="converted"
+            placeholder="Click to copy"
+            value={convertedUrl}
+            readOnly
+          />
+          <Button variant="outline" onClick={copyUrl}>
+            {copyClicked ? (
+              <CheckIcon className="h-5 w-5 text-green-500" />
+            ) : (
+              <CopyIcon className="h-5 w-5" />
+            )}
+          </Button>
+        </div>
       </div>
       <div className="grid place-items-center">
         <Button variant="outline" onClick={performReset}>
