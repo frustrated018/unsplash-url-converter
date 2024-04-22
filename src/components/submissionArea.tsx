@@ -8,12 +8,21 @@ import { Label } from "./ui/label";
 export function SubmissionArea() {
   const [originalUrl, setOriginalUrl] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
-
   const [copyClicked, setCopyClicked] = useState(false);
 
   const convertUrl = () => {
-    // Conversion logic
+    // Validation logic for URL
+    if (
+      !originalUrl.includes("unsplash.com") ||
+      !originalUrl.includes("photos/")
+    ) {
+      // Handle invalid URL
+      alert("Please enter a valid Unsplash photo URL");
+      setOriginalUrl("");
+      return;
+    }
 
+    //! Conversion logic
     const newUrl = originalUrl
       .replace("unsplash.com", "source.unsplash.com")
       .replace("photos/", "");
@@ -24,16 +33,17 @@ export function SubmissionArea() {
     setConvertedUrl(newUrl);
   };
 
-  const copyUrl = () => {
+  const copyUrl = async () => {
     // Copy converted URL to clipboard
     setCopyClicked(true);
-    navigator.clipboard.writeText(convertedUrl);
-  };
+    await navigator.clipboard.writeText(convertedUrl);
 
-  const performReset = () => {
-    setOriginalUrl("");
-    setConvertedUrl("");
-    setCopyClicked(false);
+    // Resetting the form afterwards with 2 second delay
+    setTimeout(() => {
+      setOriginalUrl("");
+      setConvertedUrl("");
+      setCopyClicked(false);
+    }, 2000);
   };
 
   return (
@@ -69,11 +79,6 @@ export function SubmissionArea() {
             )}
           </Button>
         </div>
-      </div>
-      <div className="grid place-items-center">
-        <Button variant="outline" onClick={performReset}>
-          Reset
-        </Button>
       </div>
     </section>
   );
