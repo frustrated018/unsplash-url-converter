@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { CheckIcon, CopyIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { Label } from "./ui/label";
+import { toast } from "sonner";
 
 export function SubmissionArea() {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -17,8 +18,7 @@ export function SubmissionArea() {
       !originalUrl.includes("photos/")
     ) {
       // Handle invalid URL
-      alert("Please enter a valid Unsplash photo URL");
-      setOriginalUrl("");
+      toast.error("Please enter a valid Unsplash photo URL");
       return;
     }
 
@@ -37,13 +37,14 @@ export function SubmissionArea() {
     // Copy converted URL to clipboard
     setCopyClicked(true);
     await navigator.clipboard.writeText(convertedUrl);
+    toast.success("Copied to clipboard.");
 
     // Resetting the form afterwards with 2 second delay
     setTimeout(() => {
       setOriginalUrl("");
       setConvertedUrl("");
       setCopyClicked(false);
-    }, 2000);
+    }, 3000);
   };
 
   return (

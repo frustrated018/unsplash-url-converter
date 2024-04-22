@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${robotoMono.className} dark`}>{children}</body>
+      <body className={`${robotoMono.className} dark`}>
+        {children}
+        <Toaster position="top-center" richColors duration={4000} />
+      </body>
     </html>
   );
 }
